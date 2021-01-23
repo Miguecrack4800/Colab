@@ -6,7 +6,7 @@ class Player():
         self.sprite = sprite
         self.angle = 0
         self.velm = vel
-        self.velmh = vel / 2
+        self.velmh = vel * 7 / 10
         self.vel = [0, 0]
 
     def tick(self, keys):
@@ -22,8 +22,8 @@ class Player():
         self.pos[1] += self.vel[1]
 
     def show(self, screen, mousepos):
-        self.angle = (360 - math.atan2(mousepos[1] - (self.pos[1] + 50), mousepos[0] - (self.pos[0] + 75)) * 180 / math.pi +90) % 360
         print(self.angle)
+        self.angle = (360 - math.atan2(mousepos[1] - (self.pos[1] + 50), mousepos[0] - (self.pos[0] + 75)) * 180 / math.pi +90) % 360
         image = pygame.transform.rotate(self.sprite, self.angle)
         screen.blit(image, self.pos)
         
