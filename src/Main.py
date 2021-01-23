@@ -1,4 +1,5 @@
 import pygame
+from Player import Player
 
 pygame.init()
 
@@ -8,6 +9,9 @@ bck = (25, 25, 25)
 run = True
 mousepos = [0,0]
 keys = [0, 0, 0, 0]
+image = pygame.image.load("sprites\\tanqueA1.png")
+p = Player([0,0], image, 1)
+
 while run:
 	for event in pygame.event.get():
 		if(event.type == pygame.QUIT):
@@ -34,5 +38,8 @@ while run:
 				keys[3] = 0
 
 	screen.fill(bck)
+
+	p.tick(keys)
+	p.show(screen, mousepos)
 
 	pygame.display.update()
